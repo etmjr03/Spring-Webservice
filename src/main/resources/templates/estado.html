@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns="https://www.w3.org/1999/xhtl" layout:decorate="~{layout}">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Cidade</title>
+</head>
+
+<body class="">
+
+    <section class="layout-content" layout:fragment="conteudo">
+
+        <div class="container mb-2">
+            <nav class="navbar navbar-expand-md bg-secondary text-light">
+            <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+            <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+            <h4>Cadastrar de Estados</h4>
+            </li>
+            </ul>
+            </div>
+            </nav>
+
+            <form action="/salvarEstado" method="POST" th:object=${estado}>
+            <div class="form-group">
+                <label for="nome">Estado</label>
+                <input class="form-control" type="text" id="nome" autofocus="autofocus" th:field="*{nome}" value="">
+                <br><br><br><br>
+                <label for="sigla">Sigla</label>
+                <input class="form-control" type="text" id="sigla" th:field="*{sigla}" value="" />
+                <br><br><br><br>
+                <input class="form-control" type="hidden" id="id" th:field="*{id}" value="" />
+                <input class="btn btn-primary" type="submit" value="Salvar">
+            </form>
+        </div>
+</body>
+
+</html>
