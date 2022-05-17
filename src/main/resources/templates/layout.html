@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="pt-br" xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:th="http://www.thymeleaf.org"
-	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:sec="https://www.thymeleaf.org/extras/spring-security">
 
 <head>
 <title>Layout</title>
@@ -33,12 +34,16 @@
 				Spring</h3>
 
 			<nav class="my-2 my-md-0 mr-md-3">
-				<a class="p-2 text-dark" href="/">Home</a> <a class="p-2 text-dark"
-					href="/listarCidade">Cidades</a> <a class="p-2 text-dark" href="/listarEstado">Estados</a> <a class="p-2 text-dark" href="/listarUsuario">Usuarios</a>
-					<a class="p-2 text-dark" href="/listarPermissao">Permissao</a> <a class="p-2 text-dark" href="/listarRole">Acesso</a>
+				<a class="p-2 text-dark" href="/">Home</a> 
+				<a sec:authorize="hasAuthority('cidade')" class="p-2 text-dark" th:href="@{/listarCidade}">Cidades</a> 
+				<a sec:authorize="hasAuthority('estado')" class="p-2 text-dark" th:href="@{/listarEstado}">Estados</a> 
+				<a sec:authorize="hasAuthority('usuario')"class="p-2 text-dark" th:href="@{/listarUsuario}">Usuarios</a>
+				<a sec:authorize="hasAuthority('permissao')" class="p-2 text-dark" th:href="@{/listarPermissao}">Permissao</a> 
+				<a class="p-2 text-dark" href="/listarRole">Acesso</a>
 			</nav>
 
-			<a class="btn btn-outline-primary" href="#">Entrar</a>
+			<a class="btn btn-outline-primary" href="#">Sair</a>
+			<span sec:authentication="name"></span>
 		</div>
 	</header>
 	<div class="layout-main">
