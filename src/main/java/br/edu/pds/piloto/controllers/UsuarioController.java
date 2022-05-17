@@ -5,6 +5,7 @@ import java.util.Optional;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,6 +21,7 @@ public class UsuarioController {
 	
 	@Autowired
 	private UsuarioRepositorio usuarioRepo;
+	
 	
 	@GetMapping("/listarUsuario")
 	public ModelAndView listar() {		
@@ -43,6 +45,10 @@ public class UsuarioController {
 			return cadastrar(usuario);
 		}
 		
+		if(usuario.getSenha().length() < 20) {
+			usuario.setSenha(new BCryptPasswordEncoder().encode(usuario.getSenha()));
+		}
+		
 		usuarioRepo.saveAndFlush(usuario);
 		
 		return new ModelAndView("redirect:/listarUsuario");
@@ -60,6 +66,6 @@ public class UsuarioController {
 		Optional<Usuario> usuario = usuarioRepo.findById(id);
 		usuarioRepo.delete(usuario.get());
 		
-		return listar();		
+		return new ModelAndView("redirect:/listarUsuario");		
 	}
 }

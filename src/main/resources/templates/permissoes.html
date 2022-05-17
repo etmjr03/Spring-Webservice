@@ -15,12 +15,12 @@
 				<div class="collapse navbar-collapse" id="navbarsExampleDefault">
 					<ul class="navbar-nav mr-auto">
 						<li class="nav-item active">
-							<h4>Lista de Cidades</h4>
+							<h4>Lista Permissões</h4>
 						</li>
 					</ul>
-					<a class="btn btn-primary btn-md" href="/cadastrarCidade" role="button">
+					<a class="btn btn-primary btn-md" href="/cadastrarPermissao" role="button">
 						<span class="oi oi-plus" title="Cadastro" aria-hidden="true"></span>
-						<span>Cadastrar Cidade</span>
+						<span>Cadastrar Permissões</span>
 					</a>
 				</div>
 			</nav>
@@ -32,25 +32,25 @@
 					<thead>
 						<tr>
 							<th>Id</th>
-							<th>Cidade</th>
-							<th>Estado</th>
+							<th>Usuario</th>
+							<th>Permissao</th>
 							<th>Acões</th>
 						</tr>
 					</thead>
 					<tbody>
-						<tr th:each="cidade : ${cidades}">
-							<td th:text="${cidade.id}"></td>
-							<td th:text="${cidade.nome}"></td>
-							<td th:text="${cidade.estado}"></td>
+						<tr th:each="permissao : ${permissoes}">
+							<td th:text="${permissao.id}"></td>
+							<td th:text="${permissao.usuario.nome}"></td>
+							<td th:text="${permissao.role.nomeRole}"></td>
 							<td colspan="2"><a class="btn btn-primary btn-sm mr-2"
-                                role="button" th:href="@{/editarCidade/{id}(id=${cidade.id})}"> <span class="oi oi-pencil" title="Editar"
+                                role="button" th:href="@{/editarPermissao/{id}(id=${permissao.id})}"> <span class="oi oi-pencil" title="Editar"
                                 aria-hidden="true"></span><a data-toggle="modal"
-                                data-target="#modal-warning" class="btn btn-danger btn-sm ml-2" th:attr="data-target='#modal-warning'+${cidade.id}"><span
+                                data-target="#modal-warning" class="btn btn-danger btn-sm ml-2" th:attr="data-target='#modal-warning'+${permissao.id}"><span
                                 class="oi oi-x text-light" title="Excluir" aria-hidden="true"></span></a></td>
 							</td>
 
 							<div class="modal modal-warning fade in"
-							th:id="modal-warning+${cidade.id}">
+							th:id="modal-warning+${permissao.id}">
 							<div class="modal-dialog">
 								<div class="modal-content">
 									<div class="modal-header">
@@ -61,7 +61,7 @@
 									</div>
 									<div class="modal-footer">
 										<a type="button" class="btn btn-outline"
-										th:href="@{/excluirCidade/{id}(id=${cidade.id})}">Sim</a>
+										th:href="@{/excluirPermissao/{id}(id=${permissao.id})}">Sim</a>
 										<button type="button" class="btn btn-outline pull-left"
 											data-dismiss="modal">Não</button>
 									</div>

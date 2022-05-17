@@ -2,8 +2,17 @@
 <html lang="pt-br" xmlns="https://www.w3.org/1999/xhtl" layout:decorate="~{layout}">
 
 <head>
+    <style>
+        .boot {
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+            align-content: center;
+        }
+    </style>
+
     <meta charset="UTF-8">
-    <title>Cidade</title>
+    <title>Usuarios</title>
 </head>
 
 <body class="">
@@ -12,25 +21,33 @@
 
         <div class="container mb-2">
             <nav class="navbar navbar-expand-md bg-secondary text-light">
-            <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-            <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-            <h4>Cadastrar de Estados</h4>
-            </li>
-            </ul>
-            </div>
+                <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item active">
+                            <h4>Cadastrar Usuarios</h4>
+                        </li>
+                    </ul>
+                </div>
             </nav>
 
             <form action="/salvarUsuario" method="POST" th:object=${usuario}>
-            <div class="form-group">
-                <label for="nome">Login</label>
-                <input class="form-control" type="text" id="nome" autofocus="autofocus" th:field="*{nome}" value="">
-                <br><br><br><br>
-                <label for="sigla">Senha</label>
-                <input class="form-control" type="password" id="senha" th:field="*{senha}" value="" />
-                <br><br><br><br>
-                <input class="form-control" type="hidden" id="id" th:field="*{id}" value="" />
-                <input class="btn btn-primary" type="submit" value="Salvar">
+                <div class="form-group border border-primary rounded mt-2 boot">
+                    <div class="col-md-6">
+                        <input class="form-control mt-3" type="text" id="nome" autofocus="autofocus" th:field="*{nome}"
+                            value="" placeholder="usuario">
+                            <div class="invalid-feedback"></div>
+                        <br><br>
+                    </div>
+                    <div class="col-md-6">
+                        <input class="form-control" type="password" id="senha" th:field="*{senha}" value=""
+                            placeholder="Senha" />
+                            <div class="invalid-feedback"></div>
+                        <br><br>
+                    </div>
+
+                </div>
+                <input type="hidden" id="id" th:field="*{id}" value="" />
+                <input class="btn btn-primary btn" type="submit" value="Salvar">
             </form>
         </div>
 </body>

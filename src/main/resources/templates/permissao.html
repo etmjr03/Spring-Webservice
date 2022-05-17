@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns="https://www.w3.org/1999/xhtl" layout:decorate="~{layout}">
+
+<head>
+<meta charset="UTF-8">
+<title>Cidade</title>
+
+<style type="text/css">
+body {
+text-align: center;
+}
+
+#menu ul li {
+display: inline;
+margin-right: 20px;
+}
+.boot{
+display: flex;
+flex-direction: column;
+flex-wrap: wrap;
+align-content: center;
+}
+</style>
+
+</head>
+
+<section class="layout-content mt-0" layout:fragment="conteudo">
+
+<div class="container mb-2">
+<nav class="navbar navbar-expand-md bg-secondary text-light">
+<div class="collapse navbar-collapse" id="navbarsExampleDefault">
+<ul class="navbar-nav mr-auto">
+<li class="nav-item active">
+<h4>Cadastrar Permissões</h4>
+</li>
+</ul>
+</div>
+</nav>
+
+
+<form action="/salvarPermissao" method="POST" th:object=${permissao}>
+<div class="form-group boot border border-primary rounded mt-2">
+<div class="col-md-6">
+<label for="usuario">Usuario</label>
+<select class="form-control" id="usuario" th:field="*{usuario}">
+<option th:each="usuario: ${usuarios}" th:value="${usuario.id}" th:text="${usuario.nome}">Selecione...</option>
+</select> <br> <br>
+</div>
+
+<div class="col-md-6">
+<label for="role">Acesso</label>
+<select class="form-control" id="role" th:field="*{role}">
+<option th:each="role: ${roles}" th:value="${role.id}" th:text="${role.nomeRole}">Selecione...</option>
+</select> <br> <br>
+</div>
+
+</div>
+<input type="hidden" id="id" th:field="*{id}" value="" />
+<input class="btn btn-primary btn" type="submit" value="Salvar">
+</form>
+
+</section>
+</div>
+</body>
+
+</html>

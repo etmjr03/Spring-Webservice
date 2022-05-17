@@ -6,21 +6,26 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="usuarios")
-public class Usuario {
+@Table(name="permissoes")
+public class Permissao {
 
-	public Usuario() {
+	public Permissao() {
 		
 	}
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;	
-	private String nome;
-	private String senha;
+	
+	@ManyToOne
+	private Usuario usuario;
+	
+	@ManyToOne
+	private Role role;
 	
 	public Long getId() {
 		return id;
@@ -28,24 +33,20 @@ public class Usuario {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public String getNome() {
-		return nome;
+	public Usuario getUsuario() {
+		return usuario;
 	}
-	public void setNome(String nome) {
-		this.nome = nome;
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
 	}
+	public Role getRole() {
+		return role;
+	}
+	public void setRole(Role role) {
+		this.role = role;
+	}	
 	
-	public String getSenha() {
-		return senha;
-	}
-	public void setSenha(String senha) {
-		this.senha = senha;
-	}
 	
-	@Override
-	public String toString() {
-		return nome;
-	}
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);
@@ -58,7 +59,7 @@ public class Usuario {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Usuario other = (Usuario) obj;
+		Permissao other = (Permissao) obj;
 		return Objects.equals(id, other.id);
 	}	
 }

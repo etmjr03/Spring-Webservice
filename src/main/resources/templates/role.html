@@ -10,8 +10,9 @@
             align-content: center;
         }
     </style>
+
     <meta charset="UTF-8">
-    <title>Estado</title>
+    <title>Papeis</title>
 </head>
 
 <body class="">
@@ -23,22 +24,19 @@
                 <div class="collapse navbar-collapse" id="navbarsExampleDefault">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item active">
-                            <h4>Cadastrar de Estados</h4>
+                            <h4>Cadastrar papeis</h4>
                         </li>
                     </ul>
                 </div>
             </nav>
 
-            <form action="/salvarEstado" method="POST" th:object=${estado}>
+            <form action="/salvarRole" method="POST" th:object=${role}>
                 <div class="form-group border border-primary rounded mt-2 boot">
                     <div class="col-md-6">
-                        <input class="form-control mt-3" type="text" id="nome" autofocus="autofocus" th:field="*{nome}"
-                            value="" placeholder="Estado">
-                        <br><br>
-                    </div>
-                    <div class="col-md-6">
-                        <input class="form-control" type="text" id="sigla" th:field="*{sigla}" value=""
-                            placeholder="Sigla" />
+                        <label class="align-itens-start" for="nomeRole"></label> 
+                        <input class="form-control mt-3" type="text" id="nomeRole" autofocus="autofocus" th:field="*{nomeRole}"
+                            value="" placeholder="digite">
+                            <div class="invalid-feedback"></div>
                         <br><br>
                     </div>
 

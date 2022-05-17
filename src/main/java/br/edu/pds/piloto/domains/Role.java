@@ -9,18 +9,17 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="usuarios")
-public class Usuario {
+@Table(name="roles")
+public class Role {
 
-	public Usuario() {
+	public Role() {
 		
 	}
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;	
-	private String nome;
-	private String senha;
+	private String nomeRole;	
 	
 	public Long getId() {
 		return id;
@@ -28,23 +27,15 @@ public class Usuario {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public String getNome() {
-		return nome;
+	public String getNomeRole() {
+		return nomeRole;
 	}
-	public void setNome(String nome) {
-		this.nome = nome;
+	public void setNomeRole(String nomeRole) {
+		this.nomeRole = nomeRole;
 	}
-	
-	public String getSenha() {
-		return senha;
-	}
-	public void setSenha(String senha) {
-		this.senha = senha;
-	}
-	
 	@Override
 	public String toString() {
-		return nome;
+		return nomeRole;
 	}
 	@Override
 	public int hashCode() {
@@ -58,7 +49,7 @@ public class Usuario {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Usuario other = (Usuario) obj;
+		Role other = (Role) obj;
 		return Objects.equals(id, other.id);
 	}	
 }

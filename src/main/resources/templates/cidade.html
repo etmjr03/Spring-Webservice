@@ -1,55 +1,65 @@
 <!DOCTYPE html>
-<html lang="pt-br" xmlns="https://www.w3.org/1999/xhtl"
-	layout:decorate="~{layout}">
+<html lang="pt-br" xmlns="https://www.w3.org/1999/xhtl" layout:decorate="~{layout}">
 
 <head>
-<meta charset="UTF-8">
-<title>Cidade</title>
-
-<style type="text/css">
-body {
-	text-align: center;
-}
-
-#menu ul li {
-	display: inline;
-	margin-right: 20px;
-}
-</style>
-
+    <meta charset="UTF-8">
+    <title>Cidade</title>
+    
+    <style type="text/css">
+		body {
+			text-align: center;
+		}
+		
+		#menu ul li {
+			display: inline;
+			margin-right: 20px;
+		}
+		.boot{
+		display: flex;
+    	flex-direction: column;
+		flex-wrap: wrap;
+		align-content: center;
+		}
+	</style>
+		
 </head>
 
-<section class="layout-content mt-0" layout:fragment="conteudo">
+ <section class="layout-content mt-0" layout:fragment="conteudo">
 
 	<div class="container mb-2">
-		<nav class="navbar navbar-expand-md bg-secondary text-light">
-			<div class="collapse navbar-collapse" id="navbarsExampleDefault">
-				<ul class="navbar-nav mr-auto">
-					<li class="nav-item active">
-						<h4>Cadastrar de Cidades</h4>
-					</li>
-				</ul>
-			</div>
-		</nav>
-
-
+	<nav class="navbar navbar-expand-md bg-secondary text-light">
+	<div class="collapse navbar-collapse" id="navbarsExampleDefault">
+	<ul class="navbar-nav mr-auto">
+	<li class="nav-item active">
+	<h4>Cadastrar de Cidades</h4>
+	</li>
+	</ul>
+	</div>
+	</nav>
+	
+   	
 		<form action="/salvarCidade" method="POST" th:object=${cidade}>
-			<div class="form-group">
-				<label for="nome">Cidade</label> <input class="form-control"
-					type="text" id="nome" autofocus="autofocus" th:field="*{nome}"
-					value=""> <br> <br> <br> <br> <label
-					for="estado">Estado</label> <select class="form-control"
-					id="estado" th:field="*{estado}">
-					<option th:each="estado: ${estados}" th:value="${estado.id}"
-						th:text="${estado}">Selecione...</option>
-				</select> <br> <br> <br> <br> <input type="hidden"
-					id="id" th:field="*{id}" value="" /> <input
-					class="btn btn-primary" type="submit" value="Salvar">
+			<div class="form-group boot border border-primary rounded mt-2">
+				<div class="col-md-6">
+					<label class="align-itens-start" for="nome"></label> 
+					<input class="form-control" type="text" id="nome" autofocus="autofocus" th:field="*{nome}" value="" placeholder="Cidade"> <br>
+					<br> <br> <br> 
+				</div>
+				<div class="col-md-6">
+					<select class="form-control" id="estado" th:field="*{estado}">
+						<option th:each="estado: ${estados}" th:value="${estado.id}" th:text="${estado}">Selecione...</option>
+					</select> <br> <br>
+				</div>
+				 
 			</div>
+				<input type="hidden" id="id" th:field="*{id}" value="" /> 
+				<input class="btn btn-primary btn" type="submit" value="Salvar">	
 		</form>
-</section>
-</div>
+   		
+   	</section>
+   	</div> 
 </body>
 
 </html>
 
+	
