@@ -39,7 +39,7 @@ protected void configure(HttpSecurity http) throws Exception {
 	.antMatchers("/listarCidade", "/cadastrarCidade", "/salvarCidade", "/editarCidade", "/excluirCidade").hasAuthority("cidade")
 	.antMatchers("/listarEstado", "/cadastrarEstado", "/salvarEstado", "/editarEstado", "/excluirEstado").hasAuthority("estado")
 	
-	.and().formLogin().permitAll()
+	.and().formLogin().permitAll().loginPage("/login").permitAll()
 	.and().logout()
 	.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
 	.logoutSuccessUrl("/")

@@ -8,6 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
 
 @Entity
 @Table(name="cidades")
@@ -19,7 +20,8 @@ public class Cidade {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;	
+	private Long id;
+	@NotBlank(message="Existe cidade sem nome?! Tenso hein!")
 	private String nome;
 	@ManyToOne
 	private Estado estado;
