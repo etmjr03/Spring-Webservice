@@ -7,6 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
 
 @Entity
 @Table(name="roles")
@@ -18,7 +19,8 @@ public class Role {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;	
+	private Long id;
+	@NotBlank(message=" nao pode estar vazio?! Tenso hein!")
 	private String nomeRole;	
 	
 	public Long getId() {

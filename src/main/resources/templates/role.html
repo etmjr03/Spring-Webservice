@@ -39,6 +39,10 @@
                             <div class="invalid-feedback"></div>
                         <br><br>
                     </div>
+                    
+                    <div class="col-sm-4">
+					<span th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}" class="alert alert-danger"></span>
+				</div>
 
                 </div>
                 <input type="hidden" id="id" th:field="*{id}" value="" />

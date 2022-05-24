@@ -41,6 +41,14 @@
                             placeholder="Sigla" />
                         <br><br>
                     </div>
+                    
+                    <div class="col-sm-4">
+					<span th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}" class="alert alert-danger"></span>
+				</div>
+                    
+                    <br><div class="col-sm-4">
+					<span th:if="${#fields.hasErrors('sigla')}" th:errors="*{sigla}" class="alert alert-danger"></span>
+				</div>
 
                 </div>
                 <input type="hidden" id="id" th:field="*{id}" value="" />

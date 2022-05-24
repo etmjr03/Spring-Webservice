@@ -8,6 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
 
 @Entity
 @Table(name="permissoes")
@@ -22,9 +23,11 @@ public class Permissao {
 	private Long id;	
 	
 	@ManyToOne
+	@NotBlank(message="Não pode estar em branco?! Tenso hein!")
 	private Usuario usuario;
 	
 	@ManyToOne
+	@NotBlank(message="Não pode estar em branco?! Tenso hein!")
 	private Role role;
 	
 	public Long getId() {

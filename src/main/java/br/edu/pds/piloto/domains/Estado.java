@@ -7,6 +7,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name="estados")
@@ -18,8 +20,10 @@ public class Estado {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;	
+	private Long id;
+	@NotBlank(message="Não pode estar em branco?! Tenso hein!")
 	private String nome;
+	@Size(max=2, min=2, message="2 letras pfv")
 	private String sigla;
 	
 	public Long getId() {
